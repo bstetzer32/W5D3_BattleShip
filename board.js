@@ -107,13 +107,13 @@ class Board {
 module.exports = Board;
 
 
-let testBoard = new Board(3, 3, 4);
-testBoard.attack([0,0])
-testBoard.attack([1,1])
-testBoard.attack([2,2])
-testBoard.display();
-console.table(testBoard.grid);
+// let testBoard = new Board(3, 3, 4);
+// testBoard.attack([0,0])
+// testBoard.attack([1,1])
+// testBoard.attack([2,2])
+// testBoard.display();
+// console.table(testBoard.grid);
 
-console.log(testBoard.count());
-console.log(testBoard.isValidMove([1,0]))
-console.log(testBoard.isGameOver())
+// console.log(testBoard.count());
+// console.log(testBoard.isValidMove([1,0]))
+// console.log(testBoard.isGameOver())
