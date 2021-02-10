@@ -25,16 +25,15 @@ class Board {
     while (randomIndex < this.numShips) {
         const randomCol = Math.floor(Math.random() * this.numCols);
         const randomRow = Math.floor(Math.random() * this.numRos);
-        if (grid[randomRow][randomCol] !== null) {
+        if (grid[randomRow][randomCol] !== "s") {
           grid[randomRow][randomCol] = "s";
           randomIndex++
         }
     }
     //
-    grid[4][3] = "x";
-    grid[7][5] = "x";
-    grid[3][4] = "x";
-    grid[5][7] = "x";
+    grid[1][1] = "h";
+    grid[0][0] = "h";
+    grid[2][2] = "h";
     //
     return grid;
   }
@@ -63,11 +62,25 @@ class Board {
 
   count() {
     // TODO: Return the number of valid targets (ships) remaining.
+    let counter = 0;
+    this.grid.forEach(row => {
+      row.forEach(square => {
+        if (square === "h") {
+        counter += 1;
+      }
+      });
+    });
+    return this.numShips - counter;
   }
 
   isValidMove(pos) {
     // TODO: Take in an attack position (in the form of an array [row, col]) and
     // return true if the position is a valid move.
+    if (this.grid[pos[0]][pos[1]] === null || this.grid[pos[0]][pos[1]] === "s") {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   isGameOver() {
@@ -84,6 +97,8 @@ class Board {
 module.exports = Board;
 
 
-let testBoard = new Board(10, 10, 5);
+let testBoard = new Board(3, 3, 3);
 testBoard.display();
 console.table(testBoard.grid);
+console.log(testBoard.count());
+console.log(testBoard.isValidMove([1,0]))
