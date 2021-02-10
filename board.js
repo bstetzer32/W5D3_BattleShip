@@ -30,13 +30,20 @@ class Board {
           randomIndex++
         }
     }
-
+    //
+    grid[4][3] = "x";
+    grid[7][5] = "x";
+    grid[3][4] = "x";
+    grid[5][7] = "x";
+    //
+    return grid;
   }
 
   display() {
     // TODO: Print the game board with marks on any spaces that have been fired
     // upon. Be sure not to display the unhit ships to the user! Hint: you might
     // be able to use console.table()
+    
   }
 
   count() {
@@ -60,3 +67,8 @@ class Board {
 }
 
 module.exports = Board;
+
+
+let testBoard = new Board(10, 10, 5);
+console.table(testBoard.grid);
+testBoard.display();
