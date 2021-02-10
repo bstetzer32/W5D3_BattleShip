@@ -16,7 +16,7 @@ class Board {
     for (let index = 0; index < this.numRos; index++) {
       let subArr = []
       for (let index = 0; index < this.numCols; index++) {
-        subArr.push([null])
+        subArr.push(null)
       }
       grid.push(subArr)
     }
@@ -43,7 +43,22 @@ class Board {
     // TODO: Print the game board with marks on any spaces that have been fired
     // upon. Be sure not to display the unhit ships to the user! Hint: you might
     // be able to use console.table()
-    
+    let displayGrid = []
+
+    for (let row = 0; row < this.grid.length; row++) {
+      let subArray =[];
+
+      for (let column = 0; column < this.grid[row].length; column++){
+        let position = this.grid[row][column]
+        if (position === "s") {
+          subArray.push(null)
+        } else {
+          subArray.push(position)
+        }
+      }
+      displayGrid.push(subArray)
+    }
+    console.table(displayGrid)
   }
 
   count() {
@@ -70,5 +85,5 @@ module.exports = Board;
 
 
 let testBoard = new Board(10, 10, 5);
-console.table(testBoard.grid);
 testBoard.display();
+console.table(testBoard.grid);
